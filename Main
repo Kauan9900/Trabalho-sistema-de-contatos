@@ -1,0 +1,55 @@
+#include <stdio.h>
+#include "contatos.h"
+
+int main() {
+
+    Contato contatos[MAX];
+    int total = 0;
+    int opcao;
+
+    do {
+
+        printf("\n===== GERENCIADOR DE CONTATOS =====\n");
+        printf("1 - Cadastrar\n");
+        printf("2 - Listar\n");
+        printf("3 - Buscar\n");
+        printf("4 - Editar\n");
+        printf("5 - Excluir\n");
+        printf("6 - Estatisticas\n");
+        printf("7 - Sair\n");
+
+        printf("Escolha: ");
+        scanf("%d", &opcao);
+
+        switch(opcao) {
+
+            case 1:
+                cadastrarContato(contatos, &total);
+                break;
+
+            case 2:
+                listarContatos(contatos, total);
+                break;
+
+            case 3:
+                buscarContato(contatos, total);
+                break;
+
+            case 4:
+                editarContato(contatos, total);
+                break;
+
+            case 5:
+                removerContato(contatos, &total);
+                break;
+
+            case 6:
+                printf("Total de contatos: %d\n", contarRecursivo(total));
+                break;
+
+        }
+
+    } while(opcao != 7);
+
+    return 0;
+}
